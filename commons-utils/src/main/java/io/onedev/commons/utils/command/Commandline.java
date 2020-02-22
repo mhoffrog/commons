@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 import javax.annotation.Nullable;
@@ -18,9 +20,6 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Preconditions;
-
-import io.onedev.commons.utils.Maps;
 import io.onedev.commons.utils.StringUtils;
 
 public class Commandline  {
@@ -32,17 +31,18 @@ public class Commandline  {
     private static final int MAX_ERROR_LEN = 1024;
 
 	private static final Logger logger = LoggerFactory.getLogger(Commandline.class);
-
+	
     private String executable;
     
     private List<String> arguments = new ArrayList<String>();
     
     private File workingDir;
     
+    private long timeout; // timeout in seconds
+    
     private Map<String, String> environments = new HashMap<String, String>();
     
     public Commandline(String executable) {
-    	Preconditions.checkNotNull(executable);
         this.executable = executable.replace('/', File.separatorChar).replace('\\', File.separatorChar);
     }
     
@@ -60,6 +60,11 @@ public class Commandline  {
     
     public Commandline workingDir(File workingDir) {
     	this.workingDir = workingDir;
+    	return this;
+    }
+    
+    public Commandline timeout(long timeout) {
+    	this.timeout = timeout;
     	return this;
     }
     
@@ -144,7 +149,9 @@ public class Commandline  {
 			
 			@Override
 			public void kill(Process process, String executionId) {
-				ProcessTree.get().killAll(process, Maps.newHashMap(EXECUTION_ID_ENV, executionId));
+				Map<String, String> envs = new HashMap<>();
+				envs.put(EXECUTION_ID_ENV, executionId);
+				ProcessTree.get().killAll(process, envs);
 			}
 			
 		});
@@ -201,17 +208,55 @@ public class Commandline  {
 			};
 		}
     	
-        ProcessStreamPumper streamPumper = new ProcessStreamPumper(process, stdout, errorMessageCollector, stdin);
+        ProcessStreamPumper streamPumper = new ProcessStreamPumper(
+        		process, stdout, errorMessageCollector, stdin);
         
         ExecuteResult result = new ExecuteResult(this);
-        try {
-            result.setReturnCode(process.waitFor());
-		} catch (InterruptedException e) {
-			processKiller.kill(process, executionId);
-			throw new RuntimeException(e);
-		} finally {
-			streamPumper.waitFor();
-		}
+
+        if (timeout != 0) {
+        	Thread thread = Thread.currentThread();
+    		AtomicBoolean stoppedRef = new AtomicBoolean(false);
+    		long time = System.currentTimeMillis();
+    		EXECUTOR_SERVICE.execute(new Runnable() {
+
+				@Override
+				public void run() {
+					while (!stoppedRef.get()) {
+						if (System.currentTimeMillis() - time > timeout*1000L) {
+							thread.interrupt();
+							break;
+						} else {
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+							}
+						}
+					}
+				}
+    			
+    		});
+            try {
+            	result.setReturnCode(process.waitFor());
+    		} catch (InterruptedException e) {
+    			processKiller.kill(process, executionId);
+    			if (System.currentTimeMillis() - time > timeout*1000L)
+    				throw new RuntimeException(new TimeoutException());
+    			else
+    				throw new RuntimeException(e);
+    		} finally {
+    			stoppedRef.set(true);
+    			streamPumper.waitFor();
+    		}
+        } else {
+            try {
+            	result.setReturnCode(process.waitFor());
+    		} catch (InterruptedException e) {
+    			processKiller.kill(process, executionId);
+    			throw new RuntimeException(e);
+    		} finally {
+    			streamPumper.waitFor();
+    		}
+        }
 
         String errorMessage = errorMessageRef.get();
         if (errorMessage != null && StringUtils.isNotBlank(errorMessage))

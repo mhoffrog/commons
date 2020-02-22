@@ -4,64 +4,42 @@
 	<parent>	
 		<groupId>io.onedev</groupId>
 		<artifactId>commons</artifactId>
-		<version>1.1.9</version>
+		<version>1.1.12</version>
 	</parent>
 	<artifactId>commons-jsyntax</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>com.google.code.findbugs</groupId>
 			<artifactId>jsr305</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>20.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.onedev</groupId>
 			<artifactId>commons-utils</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
-			<version>0.9.11</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>codemirror</artifactId>
-			<version>5.21.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.nanohttpd</groupId>
 			<artifactId>nanohttpd</artifactId>
-			<version>2.2.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<repositories>
 		<repository>
-			<id>pmeaseRepo</id>
-			<url>http://artifact.pmease.com/artifactory/pmeaseRepo</url>
+			<id>onedev</id>
+			<url>https://artifact.onedev.io/artifactory/onedev</url>
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>never</updatePolicy>
