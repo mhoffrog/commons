@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>io.onedev</groupId>
+		<groupId>com.github.mhoffrog.io.onedev</groupId>
 		<artifactId>parent</artifactId>
 		<version>1.0.4</version>
 	</parent>
@@ -21,38 +21,38 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>io.onedev</groupId>
+				<groupId>com.github.mhoffrog.io.onedev</groupId>
 				<artifactId>commons-launcher-bootstrap</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.onedev</groupId>
+				<groupId>com.github.mhoffrog.io.onedev</groupId>
 				<artifactId>commons-utils</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.onedev</groupId>
+				<groupId>com.github.mhoffrog.io.onedev</groupId>
 				<artifactId>commons-launcher-loader</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.onedev</groupId>
+				<groupId>com.github.mhoffrog.io.onedev</groupId>
 				<artifactId>commons-launcher-loader</artifactId>
 				<type>test-jar</type>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.onedev</groupId>
+				<groupId>com.github.mhoffrog.io.onedev</groupId>
 				<artifactId>commons-codeassist</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.onedev</groupId>
+				<groupId>com.github.mhoffrog.io.onedev</groupId>
 				<artifactId>commons-jsymbol</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>io.onedev</groupId>
+				<groupId>com.github.mhoffrog.io.onedev</groupId>
 				<artifactId>commons-jsyntax</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -197,29 +197,29 @@
 				<version>59.1</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.core</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.core.contenttype</artifactId>
-				<version>3.4.200.v20140207</version>
+				<version>3.6.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.core</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.core.jobs</artifactId>
-				<version>3.5.300.v20130429</version>
+				<version>3.9.1</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.core</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.core.resources</artifactId>
-				<version>3.9.1.v20140825</version>
+				<version>3.12.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.core</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.core.runtime</artifactId>
-				<version>3.13.0.v20170207</version>
+				<version>3.13.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.core</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.core.filesystem</artifactId>
-				<version>1.7.0.v20170406</version>
+				<version>1.7.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
@@ -227,22 +227,22 @@
 				<version>6.0.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.osgi</artifactId>
-				<version>3.12.0.v20170512</version>
+				<version>3.12.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.equinox</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.equinox.registry</artifactId>
-				<version>3.5.400.v20140428</version>
+				<version>3.7.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.equinox</groupId>
+				<groupId>org.eclipse.platform</groupId>
 				<artifactId>org.eclipse.equinox.common</artifactId>
-				<version>3.6.200.v20130402</version>
+				<version>3.9.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.cdt</groupId>
+				<groupId>com.github.mhoffrog.attached</groupId>
 				<artifactId>org.eclipse.cdt.core</artifactId>
 				<version>5.11.0</version>
 			</dependency>
@@ -278,6 +278,7 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<!--
 	<repositories>
 		<repository>
 			<id>onedev</id>
@@ -294,6 +295,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	-->
 	<properties>
 		<slf4j.version>1.7.5</slf4j.version>
 		<logback.version>1.0.11</logback.version>

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>  
     <artifactId>commons-codeassist</artifactId>  
     <parent> 
-        <groupId>io.onedev</groupId>  
+        <groupId>com.github.mhoffrog.io.onedev</groupId>  
         <artifactId>commons</artifactId>  
         <version>1.1.12</version>
     </parent>  
@@ -51,14 +51,15 @@
     </build>  
     <dependencies> 
 		<dependency>
-			<groupId>io.onedev</groupId>
+			<groupId>com.github.mhoffrog.io.onedev</groupId>
 			<artifactId>commons-utils</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr4</artifactId>
 		</dependency>
-    </dependencies>  
+    </dependencies>
+	<!--
 	<repositories>
 		<repository>
 			<id>onedev</id>
@@ -75,4 +76,5 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	-->
 </project>

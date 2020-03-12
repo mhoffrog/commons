@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>io.onedev</groupId>
+		<groupId>com.github.mhoffrog.io.onedev</groupId>
 		<artifactId>commons</artifactId>
 		<version>1.1.12</version>
 	</parent>
@@ -75,23 +75,23 @@
 		    <artifactId>icu4j</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.eclipse.core</groupId>
+		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.core.contenttype</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.eclipse.core</groupId>
+		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.core.jobs</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.eclipse.core</groupId>
+		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.core.resources</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.eclipse.core</groupId>
+		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.core.runtime</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.eclipse.core</groupId>
+		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.core.filesystem</artifactId>
 		</dependency>
 		<dependency>
@@ -99,21 +99,21 @@
 		    <artifactId>org.osgi.core</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.eclipse</groupId>
+		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.osgi</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.equinox</groupId>
+			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.equinox.registry</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.eclipse.equinox</groupId>
+		    <groupId>org.eclipse.platform</groupId>
 		    <artifactId>org.eclipse.equinox.common</artifactId>
-		</dependency>		
+		</dependency>
 		<dependency>
-		    <groupId>org.eclipse.cdt</groupId>
+		    <groupId>com.github.mhoffrog.attached</groupId>
 		    <artifactId>org.eclipse.cdt.core</artifactId>
-		</dependency>	
+		</dependency>
 		<dependency>  
             <groupId>org.sonarsource.javascript</groupId>  
             <artifactId>javascript-frontend</artifactId>  
@@ -134,10 +134,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>io.onedev</groupId>
+			<groupId>com.github.mhoffrog.io.onedev</groupId>
 			<artifactId>commons-utils</artifactId>
 		</dependency>
 	</dependencies>
+	<!--
 	<repositories>
 		<repository>
 			<id>onedev</id>
@@ -154,4 +155,5 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	-->
 </project>
